@@ -5,4 +5,6 @@ spring:
     name: leadermailbox_admin
     admin:
       enabled: true
+  thymeleaf:
+    check-template-location: false
 
