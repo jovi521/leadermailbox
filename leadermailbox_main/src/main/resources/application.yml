@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: dev
+info:
+  app:
+    name: Spring Boot Actuator-Main-Admin For LeaderMailbox
+    version: 0.0.1-SNAPSHOT
+    description: Actuator-Main-Admin-Client

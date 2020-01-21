@@ -1,0 +1,60 @@
+server:
+  port: 8084
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/leadermailbox?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  application:
+    name: leadermailbox_main
+  boot:
+    admin:
+      client:
+        url: http://www.leadermailbox.com:8085
+  security:
+    user:
+      name: admin
+      password: 123456
+      roles: ADMIN
+#  mail:
+#    host: smtp.qq.com
+#    username: 506997994@qq.com
+#    password: Vivi@1005
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+#    test-connection: true
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+swagger:
+  enabled: true
+  title: 领导信箱RESTFUL API文档
+  description: spring boot2-swagger2
+  version: 2.9.2
+  license: Apache License, Version 2.0
+  license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: jovi
+    url: https://github.com/jovi521
+    email: 506997994@qq.com
+  base-package: com.skybrian.leadermailbox
+  base-path: /**
+  exclude-path: /error
+  #  docket:
+  #    docket1:
+  #      title: 文档分组1
+  #    docket2:
+  #      title: 文档分组2
+  ui-config:
+    show-request-headers: true
