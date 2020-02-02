@@ -7,14 +7,21 @@ import io.github.swagger2markup.Swagger2MarkupConverter;
 import io.github.swagger2markup.builder.Swagger2MarkupConfigBuilder;
 import io.github.swagger2markup.markup.builder.MarkupLanguage;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.sql.DataSource;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class DemoApplicationTests {
+
+    @Autowired
+    DataSource dataSource;
 
     @Test
     public void generateAsciiDocs() throws Exception {
@@ -123,5 +130,11 @@ class DemoApplicationTests {
                 .withConfig(config)
                 .build()
                 .toFile(Paths.get("./api-docs/markdown/generated/all"));
+    }
+
+    @Test
+    public void testData() throws SQLException {
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection);
     }
 }

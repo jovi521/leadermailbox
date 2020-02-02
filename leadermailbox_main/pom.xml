@@ -34,6 +34,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- DataSource:主要为了使用Druid的监控，底层数据源还是使用Hikari -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        
         <!-- elasticsearch -->
         <dependency>
             <groupId>org.springframework.data</groupId>

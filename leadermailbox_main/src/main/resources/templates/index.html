@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="shortcut icon" th:href="@{/favicon4.ico}"/>
 </head>
 <body>
-index
+<div sec:authorize="!isAuthenticated()">
+
+    <!-- 避免IDEA语法报错 -->
+    <!--/*@thymesVar id="index" type="java.time.LocalDateTime"*/-->
+    <h1 th:text="${#dates.format(date,'yyyy-MM-dd HH:mm:ss')}">此处显示后台传来的动态值</h1>
+    <h1 th:utext="${#dates.format(date,'yyyy-MM-dd HH:mm:ss')}">此处显示后台传来的动态值</h1>
+    <h2>-----------------------------</h2>
+    <h1 th:each="list : ${lists}" th:text="${list}">[[${list}]]</h1>
+    <h2>-----------------------------</h2>
+    <h3 th:each="list : ${lists}">[[${list}]]</h3>
+</div>
 </body>
 </html>

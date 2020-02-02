@@ -6,39 +6,80 @@ spring:
     url: jdbc:mysql://localhost:3306/leadermailbox?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: on
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: on
+      # 监控配置
+      stat-view-servlet:
+        enabled: on
+        reset-enable: false
+        deny:
+        allow:
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: 123456
+      web-stat-filter:
+        enabled: on
+        url-pattern: /*
+        exclusions: "*,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        ## stat是统计，wall是SQL防火墙，防SQL注入的，log4j是用来输出统计数据的
+      filters: stat,wall
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # Spring监控配置，对spring内部接口调用的监控 说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置
+      aop-patterns: com.nqmysb.scaffold.user.service.*.*
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: on
+    schema:
+      - classpath:sql/department.sql
+      - classpath:sql/employee.sql
+    # 必须要指定always 方可生效
+    initialization-mode: embedded
   application:
     name: leadermailbox_main
   boot:
     admin:
       client:
         url: http://www.leadermailbox.com:8085
-  security:
-    user:
-      name: admin
-      password: 123456
-      roles: ADMIN
-#  mail:
-#    host: smtp.qq.com
-#    username: 506997994@qq.com
-#    password: Vivi@1005
-#    properties:
-#      mail:
-#        smtp:
-#          auth: true
-#          starttls:
-#            enable: true
-#            required: true
-#    test-connection: true
+  #  security:
+  #    user:
+  #      name: admin
+  #      password: 123456
+  #      roles: ADMIN
+  #  mail:
+  #    host: smtp.qq.com
+  #    username: 506997994@qq.com
+  #    password: Vivi@1005
+  #    properties:
+  #      mail:
+  #        smtp:
+  #          auth: true
+  #          starttls:
+  #            enable: true
+  #            required: true
+  #    test-connection: true
   elasticsearch:
     rest:
       uris: http://localhost:9200
+    jest:
+      multi-threaded: off
 management:
   endpoints:
     web:
       exposure:
         include: '*'
 swagger:
-  enabled: true
+  enabled: on
   title: 领导信箱RESTFUL API文档
   description: spring boot2-swagger2
   version: 2.9.2
@@ -57,4 +98,11 @@ swagger:
   #    docket2:
   #      title: 文档分组2
   ui-config:
-    show-request-headers: true
+    show-request-headers: on
+mybatis:
+  config-location:
+  mapper-locations: [classpath:mybatis/mapper/*.xml]
+  configuration:
+    map-underscore-to-camel-case: on
+    #    控制台打印mybatis sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

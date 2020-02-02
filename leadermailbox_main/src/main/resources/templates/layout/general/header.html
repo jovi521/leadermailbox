@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header_frag(title_selector)">
+    <base th:href="@{../../}">
+    <title th:replace="${title_selector}">Header</title>
+    <meta charset="utf-8"/>
+    <meta content="Page with empty content" name="description">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!--begin::Fonts -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/css(family='Poppins:300,400,500,600,700|Roboto:300,400,500,600,700')}">
+
+    <!--end::Fonts -->
+
+    <!--begin::Page Vendors Styles(used by this page) -->
+    <link rel="stylesheet" th:href="@{assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" type="text/css"/>
+
+    <!--end::Page Vendors Styles -->
+
+    <!--begin::Global Theme Styles(used by all pages) -->
+    <link rel="stylesheet" th:href="@{assets/plugins/global/plugins.bundle.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{assets/css/style.bundle.css}" type="text/css"/>
+
+    <!--end::Global Theme Styles -->
+
+    <!--begin::Layout Skins(used by all pages) -->
+    <link rel="stylesheet" th:href="@{assets/css/skins/header/base/light.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{assets/css/skins/header/menu/light.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{assets/css/skins/brand/dark.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{assets/css/skins/aside/dark.css}" type="text/css"/>
+
+    <!--end::Layout Skins -->
+    <link rel="shortcut icon" th:href="@{/favicon4.ico}"/>
+</head>
+</html>
