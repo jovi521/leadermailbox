@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- begin::Head -->
-<head th:replace="layout/general/header :: header_frag(~{::title})">
+<head th:replace="layout/general/html-head :: header_frag(~{::title},~{})">
     <title>Empty Page</title>
+    <!--<link rel="shortcut icon" th:href="@{/favicon4.ico}"/>-->
 </head>
 
 <!-- end::Head -->
@@ -4274,6 +4275,6 @@
 <!--ENd:: Chat-->
 </body>
 
-<footer th:replace="layout/general/footer :: footer_frag"></footer>
+<footer th:replace="layout/general/html-footer :: footer_frag(~{})"></footer>
 <!-- end::Body -->
 </html>

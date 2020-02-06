@@ -33,11 +33,11 @@ spring:
         url-pattern: /*
         exclusions: "*,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
         ## stat是统计，wall是SQL防火墙，防SQL注入的，log4j是用来输出统计数据的
-      filters: stat,wall
+      filters: stat,wall,slf4j
       # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       # Spring监控配置，对spring内部接口调用的监控 说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置
-      aop-patterns: com.nqmysb.scaffold.user.service.*.*
+      aop-patterns: com.skybrian.leadermailbox.service.*.*
       max-pool-prepared-statement-per-connection-size: 20
       use-global-data-source-stat: on
     schema:
@@ -106,3 +106,5 @@ mybatis:
     map-underscore-to-camel-case: on
     #    控制台打印mybatis sql语句
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+

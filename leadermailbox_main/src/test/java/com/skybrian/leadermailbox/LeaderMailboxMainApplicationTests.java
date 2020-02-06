@@ -1,5 +1,6 @@
 package com.skybrian.leadermailbox;
 
+import com.skybrian.leadermailbox.domain.enums.tel.StateFlagEnum;
 import io.github.swagger2markup.GroupBy;
 import io.github.swagger2markup.Language;
 import io.github.swagger2markup.Swagger2MarkupConfig;
@@ -133,8 +134,7 @@ class DemoApplicationTests {
     }
 
     @Test
-    public void testData() throws SQLException {
-        Connection connection = dataSource.getConnection();
-        System.out.println(connection);
+    public void testData() {
+        System.out.println(StateFlagEnum.STATE_FLAG_SEAT_ANSWER.toString());
     }
 }

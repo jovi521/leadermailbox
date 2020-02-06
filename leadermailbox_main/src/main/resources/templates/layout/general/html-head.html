@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="header_frag(title_selector)">
+<head th:fragment="header_frag(title_selector,links_selector)">
     <base th:href="@{../../}">
     <title th:replace="${title_selector}">Header</title>
     <meta charset="utf-8"/>
-    <meta content="Page with empty content" name="description">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-
+    <meta content="Page with html-head content" name="description"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta content="webkit|ie-comp|ie-stand" name="renderer"/>
     <!--begin::Fonts -->
-    <link rel="stylesheet"
+    <!--<link rel="stylesheet"
           th:href="@{https://fonts.googleapis.com/css(family='Poppins:300,400,500,600,700|Roboto:300,400,500,600,700')}">
-
+-->
     <!--end::Fonts -->
 
     <!--begin::Page Vendors Styles(used by this page) -->
@@ -32,5 +33,7 @@
 
     <!--end::Layout Skins -->
     <link rel="shortcut icon" th:href="@{/favicon4.ico}"/>
+
+    <th:block th:replace="${links_selector}"/>
 </head>
 </html>

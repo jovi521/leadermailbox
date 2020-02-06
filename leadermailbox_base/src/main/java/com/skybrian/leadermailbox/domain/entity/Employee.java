@@ -2,11 +2,13 @@ package com.skybrian.leadermailbox.domain.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @Author jovi
  */
 @Data
-public class Employee {
+public class Employee implements Serializable {
 
     private Integer id;
 
