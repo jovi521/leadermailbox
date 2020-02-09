@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,12 +13,17 @@ import java.time.LocalDateTime;
  * @Date 2020/1/15 17:04
  **/
 @ApiModel(value = "TTelGetDeal", description = "来电记录")
+@Entity
+@Table(name = "t_tel_get_deal")
 @Data
 public class TTelGetDeal implements Serializable {
 
-    @ApiModelProperty(name = "pkId", value = "主键")
+    @ApiModelProperty(name = "pkId", value = "主键", reference = "主键采用自动递增策略")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer pkId;
 
+    @Column(name = "call_id")
     @ApiModelProperty(name = "callId", value = "呼叫ID")
     private String callId;
 

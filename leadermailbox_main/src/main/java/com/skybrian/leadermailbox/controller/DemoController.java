@@ -23,7 +23,7 @@ import java.util.Arrays;
 public class DemoController {
 
     @Autowired
-    DepartmentService departmentService;
+    private DepartmentService departmentService;
 
     @ResponseBody
     @GetMapping(value = "dept/{id}")

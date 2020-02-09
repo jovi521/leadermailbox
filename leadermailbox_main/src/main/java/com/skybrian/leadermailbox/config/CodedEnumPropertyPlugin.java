@@ -40,7 +40,7 @@ public class CodedEnumPropertyPlugin implements ModelPropertyBuilderPlugin {
         if (annotation.isPresent() && StateFlagEnum.class.isAssignableFrom(rawPrimaryType)) {
             //获取CodedEnum的code值
             StateFlagEnum[] values = (StateFlagEnum[]) rawPrimaryType.getEnumConstants();
-            final List<String> displayValues = Arrays.stream(values).map(stateFlagEnum -> stateFlagEnum.toString()).collect(Collectors.toList());
+            final List<String> displayValues = Arrays.stream(values).map(StateFlagEnum::toString).collect(Collectors.toList());
             final AllowableListValues allowableListValues = new AllowableListValues(displayValues, rawPrimaryType.getTypeName());
             //固定设置为int类型
             final ResolvedType resolvedType = context.getResolver().resolve(String.class);

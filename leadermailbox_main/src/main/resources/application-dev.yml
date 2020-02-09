@@ -73,6 +73,15 @@ spring:
       uris: http://localhost:9200
     jest:
       multi-threaded: off
+  jpa:
+    show-sql: on
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: on
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database: mysql
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 management:
   endpoints:
     web:

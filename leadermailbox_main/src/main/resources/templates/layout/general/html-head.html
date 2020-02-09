@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="header_frag(title_selector,links_selector)">
+<head th:fragment="html_head_frag(title_selector,links_selector)">
     <base th:href="@{../../}">
-    <title th:replace="${title_selector}">Header</title>
+    <title th:replace="${title_selector}">Html-header</title>
     <meta charset="utf-8"/>
     <meta content="Page with html-head content" name="description"/>
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
