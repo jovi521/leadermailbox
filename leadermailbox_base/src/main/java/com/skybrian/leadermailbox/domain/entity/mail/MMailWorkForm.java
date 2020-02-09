@@ -93,7 +93,7 @@ public class MMailWorkForm implements Serializable {
     @ApiModelProperty(name = "dOverDesc", value = "回复结果")
     private String dOverDesc;
 
-    @ApiModelProperty(name = "wsUFlag", value = "同步更新标记")
+    @ApiModelProperty(name = "wsUFlag", value = "同步更新标记", allowableValues = "1, 2")
     private Integer wsUFlag;
 
     @ApiModelProperty(name = "iptTime", value = "创建时间")
@@ -111,7 +111,7 @@ public class MMailWorkForm implements Serializable {
     @ApiModelProperty(name = "setProName", value = "工单性质")
     private String setProName;
 
-    @ApiModelProperty(name = "crtStepID", value = "工单状态编号")
+    @ApiModelProperty(name = "crtStepID", value = "工单状态编号", allowableValues = "100, 960, 950, 401, 400, 900, 901, 950, -8, 800, 905")
     private Integer crtStepID;
 
     @ApiModelProperty(name = "crtStepName", value = "工单状态")
@@ -123,7 +123,7 @@ public class MMailWorkForm implements Serializable {
     @ApiModelProperty(name = "visitFlag", value = "回访标记")
     private Integer visitFlag;
 
-    @ApiModelProperty(name = "recordFlag", value = "满意度标记")
+    @ApiModelProperty(name = "recordFlag", value = "满意度标记", allowableValues = "20, 22, 23, 10, 0")
     private Integer recordFlag;
 
     @ApiModelProperty(name = "recordTime", value = "回访时间")

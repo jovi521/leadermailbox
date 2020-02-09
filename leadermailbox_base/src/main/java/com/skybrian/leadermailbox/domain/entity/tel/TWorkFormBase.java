@@ -48,7 +48,7 @@ public class TWorkFormBase implements Serializable {
     @ApiModelProperty(name = "fmEmail", value = "邮箱")
     private String fmEmail;
 
-    @ApiModelProperty(name = "openFrom", value = "同意公开标记")
+    @ApiModelProperty(name = "openFrom", value = "同意公开标记", allowableValues = "0, 1")
     private Integer openFrom;
 
     @ApiModelProperty(name = "fmContent", value = "工单内容")
@@ -72,13 +72,13 @@ public class TWorkFormBase implements Serializable {
     @ApiModelProperty(name = "wsKey", value = "提取码")
     private String wsKey;
 
-    @ApiModelProperty(name = "fmAttachP", value = "直派标记")
+    @ApiModelProperty(name = "fmAttachP", value = "直派标记", example = "1")
     private String fmAttachP;
 
     @ApiModelProperty(name = "workFormNO", value = "工单编号")
     private String workFormNO;
 
-    @ApiModelProperty(name = "openX", value = "建议公开标记")
+    @ApiModelProperty(name = "openX", value = "建议公开标记", allowableValues = "0, 1")
     private Integer openX;
 
     @ApiModelProperty(name = "wfLimit", value = "办理时限")
@@ -99,7 +99,7 @@ public class TWorkFormBase implements Serializable {
     @ApiModelProperty(name = "wsTopic", value = "工单主题")
     private Integer wsTopic;
 
-    @ApiModelProperty(name = "wsUFlag", value = "同步更新标记")
+    @ApiModelProperty(name = "wsUFlag", value = "同步更新标记", allowableValues = "1, 2")
     private Integer wsUFlag;
 
     @ApiModelProperty(name = "iptWorkNo", value = "创建人编号")
@@ -114,7 +114,7 @@ public class TWorkFormBase implements Serializable {
     @ApiModelProperty(name = "setProName", value = "工单性质")
     private String setProName;
 
-    @ApiModelProperty(name = "crtStepID", value = "工单状态编号")
+    @ApiModelProperty(name = "crtStepID", value = "工单状态编号", allowableValues = "100, 960, 950, 401, 400, 900, 901, 950, -8, 800")
     private Integer crtStepID;
 
     @ApiModelProperty(name = "crtStepName", value = "工单状态")
@@ -126,7 +126,7 @@ public class TWorkFormBase implements Serializable {
     @ApiModelProperty(name = "visitFlag", value = "回访标记")
     private Integer visitFlag;
 
-    @ApiModelProperty(name = "recordFlag", value = "满意度标记")
+    @ApiModelProperty(name = "recordFlag", value = "满意度标记", allowableValues = "22, 20")
     private Integer recordFlag;
 
     @ApiModelProperty(name = "recordTime", value = "归档时间")

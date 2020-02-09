@@ -52,7 +52,7 @@ public class IndexController {
 //    @ApiImplicitParam(name = "stateFlagEnumssssssqqqq", value = "字符串StateFlagEnum", required = true, dataType = "String")
     @GetMapping(value = "/index4")
     public String index4(StateFlagEnum stateFlagEnum) {
-        System.out.println(StateFlagEnum.STATE_FLAG_SEAT_ANSWER.getCode());
+        System.out.println(StateFlagEnum.STATE_FLAG_SEAT_ANSWER.toString());
         return "hello: " + stateFlagEnum;
     }
 }

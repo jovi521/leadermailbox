@@ -36,7 +36,7 @@ public class TWfSendBack implements Serializable {
     @ApiModelProperty(name = "seqName", value = "交办次数")
     private String seqName;
 
-    @ApiModelProperty(name = "sendState", value = "收发状态")
+    @ApiModelProperty(name = "sendState", value = "收发状态", allowableValues = "0, 10, 11, 21, 22, 23, 30, 40, 50, 51")
     private Integer sendState;
 
     @ApiModelProperty(name = "sortCode", value = "交办性质编号")
@@ -81,7 +81,7 @@ public class TWfSendBack implements Serializable {
     @ApiModelProperty(name = "sendRemark", value = "派发内容")
     private String sendRemark;
 
-    @ApiModelProperty(name = "sAttachPath", value = "直派标记")
+    @ApiModelProperty(name = "sAttachPath", value = "直派标记", allowableValues = "1")
     private String sAttachPath;
 
     @ApiModelProperty(name = "getTime", value = "签收时间")
@@ -90,7 +90,7 @@ public class TWfSendBack implements Serializable {
     @ApiModelProperty(name = "promisesTime", value = "办理期限")
     private LocalDateTime promisesTime;
 
-    @ApiModelProperty(name = "backState", value = "回复标记")
+    @ApiModelProperty(name = "backState", value = "回复标记", allowableValues = "0, 10, 11, 12, 21, 22")
     private Integer backState;
 
     @ApiModelProperty(name = "getPerson", value = "回复人")

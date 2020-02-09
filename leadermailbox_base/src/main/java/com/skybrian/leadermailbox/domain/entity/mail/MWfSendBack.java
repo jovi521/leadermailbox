@@ -30,7 +30,7 @@ public class MWfSendBack implements Serializable {
     @ApiModelProperty(name = "seqName", value = "交办次数")
     private String seqName;
 
-    @ApiModelProperty(name = "sendState", value = "收发状态")
+    @ApiModelProperty(name = "sendState", value = "收发状态", allowableValues = "0, 10, 11, 21, 22, 23, 30, 40")
     private Integer sendState;
 
     @ApiModelProperty(name = "sortCode", value = "交办性质编号")
@@ -78,7 +78,7 @@ public class MWfSendBack implements Serializable {
     @ApiModelProperty(name = "getTime", value = "签收时间")
     private LocalDateTime getTime;
 
-    @ApiModelProperty(name = "backState", value = "回复标记")
+    @ApiModelProperty(name = "backState", value = "回复标记", allowableValues = "0, 10, 11, 12, 21, 22")
     private Integer backState;
 
     @ApiModelProperty(name = "getPerson", value = "回复人")

@@ -1,7 +1,7 @@
 package com.skybrian.leadermailbox.config;
 
 import com.fasterxml.classmate.ResolvedType;
-import com.skybrian.leadermailbox.domain.enums.CodedEnum;
+import com.skybrian.leadermailbox.domain.enums.tel.StateFlagEnum;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.schema.Annotations;
@@ -37,13 +37,13 @@ public class CodedEnumPropertyPlugin implements ModelPropertyBuilderPlugin {
         }
         final Class<?> rawPrimaryType = context.getBeanPropertyDefinition().get().getRawPrimaryType();
         //过滤得到目标类型
-        if (annotation.isPresent() && CodedEnum.class.isAssignableFrom(rawPrimaryType)) {
+        if (annotation.isPresent() && StateFlagEnum.class.isAssignableFrom(rawPrimaryType)) {
             //获取CodedEnum的code值
-            CodedEnum[] values = (CodedEnum[]) rawPrimaryType.getEnumConstants();
-            final List<String> displayValues = Arrays.stream(values).map(codedEnum -> Integer.toString(codedEnum.getCode())).collect(Collectors.toList());
+            StateFlagEnum[] values = (StateFlagEnum[]) rawPrimaryType.getEnumConstants();
+            final List<String> displayValues = Arrays.stream(values).map(stateFlagEnum -> stateFlagEnum.toString()).collect(Collectors.toList());
             final AllowableListValues allowableListValues = new AllowableListValues(displayValues, rawPrimaryType.getTypeName());
             //固定设置为int类型
-            final ResolvedType resolvedType = context.getResolver().resolve(int.class);
+            final ResolvedType resolvedType = context.getResolver().resolve(String.class);
             context.getBuilder().allowableValues(allowableListValues).type(resolvedType);
         }
     }

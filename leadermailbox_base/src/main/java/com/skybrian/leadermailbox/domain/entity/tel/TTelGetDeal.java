@@ -120,7 +120,7 @@ public class TTelGetDeal implements Serializable {
     @ApiModelProperty(name = "wfSltKey", value = "工单主题")
     private String wfSltKey;
 
-    @ApiModelProperty(name = "wkFmFlag", value = "创建工单标记")
+    @ApiModelProperty(name = "wkFmFlag", value = "创建工单标记", example = "1")
     private Integer wkFmFlag;
 
     @ApiModelProperty(name = "wkFmNO", value = "工单编号")
