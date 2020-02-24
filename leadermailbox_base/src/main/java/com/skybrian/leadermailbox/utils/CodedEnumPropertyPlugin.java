@@ -1,4 +1,4 @@
-package com.skybrian.leadermailbox.config;
+package com.skybrian.leadermailbox.utils;
 
 import com.fasterxml.classmate.ResolvedType;
 import com.skybrian.leadermailbox.domain.enums.tel.StateFlagEnum;

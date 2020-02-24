@@ -26,9 +26,24 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.skybrian</groupId>
+            <artifactId>leadermailbox_common</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <!-- sharding-jdbc -->
+        <dependency>
+            <groupId>io.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-namespace</artifactId>
         </dependency>
 
         <!-- MySQL -->
@@ -44,6 +59,11 @@
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
         <!-- Auto create tables-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,30 +76,31 @@
             <artifactId>spring-data-elasticsearch</artifactId>
         </dependency>
 
-        <!-- Mybatis -->
+        <!-- redis -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- Mybatis -->
+        <!--<dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
-        
-        <!-- swagger RESTful API 文档 -->
+        </dependency>-->
+        <!-- pagehelper -->
+        <!--<dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>-->
+
+        <!--Mybatis-Plus-->
         <dependency>
-            <groupId>com.spring4all</groupId>
-            <artifactId>swagger-spring-boot-starter</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.github.swagger2markup</groupId>
-            <artifactId>swagger2markup</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>nl.jworks.markdown_to_asciidoc</groupId>
-                    <artifactId>markdown_to_asciidoc</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>ch.netzwerg</groupId>
-                    <artifactId>paleo-core</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
         </dependency>
 
         <dependency>

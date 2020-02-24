@@ -1,6 +1,9 @@
 server:
   port: 8084
+  address: 127.0.0.1
 spring:
+  main:
+    allow-bean-definition-overriding: on
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/leadermailbox?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
@@ -45,12 +48,15 @@ spring:
       - classpath:sql/employee.sql
     # 必须要指定always 方可生效
     initialization-mode: embedded
+  flyway:
+    enabled: off
+    check-location: off
   application:
     name: leadermailbox_main
   boot:
     admin:
       client:
-        url: http://www.leadermailbox.com:8085
+        url: http://127.0.0.1:8085
   #  security:
   #    user:
   #      name: admin
@@ -70,9 +76,9 @@ spring:
   #    test-connection: true
   elasticsearch:
     rest:
-      uris: http://localhost:9200
+      uris: http://192.168.175.128:9200
     jest:
-      multi-threaded: off
+      multi-threaded: on
   jpa:
     show-sql: on
     hibernate:
@@ -81,7 +87,27 @@ spring:
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     database: mysql
-#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    # 必须指定数据库方言，如果是5，则指定所用引擎InnoDB，不然默认是MyISAM；如果是8，则不需要指定引擎，默认就是InnoDB
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: on
+    properties:
+      hibernate:
+        format_sql: on
+  quartz:
+    auto-startup: off
+  redis:
+    host: 192.168.175.128
+    port: 6379
+    database: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+#    properties:
+#      hibernate:
+#        dialect:
+#          storage_engine: innodb
 management:
   endpoints:
     web:
@@ -108,12 +134,34 @@ swagger:
   #      title: 文档分组2
   ui-config:
     show-request-headers: on
-mybatis:
+mybatis-plus:
   config-location:
   mapper-locations: [classpath:mybatis/mapper/*.xml]
   configuration:
     map-underscore-to-camel-case: on
     #    控制台打印mybatis sql语句
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
+#  returnPageInfo: check
+sharding:
+  jdbc:
+    datasource:
+      names: leadermailbox
+      leadermailbox:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/leadermailbox?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+    config:
+      props:
+        sql:
+          show: true
+#      sharding:
+#        default-database-strategy:
+#          inline:
+#            sharding-column: id
