@@ -104,6 +104,21 @@ spring:
         max-active: 8
         max-idle: 8
         min-idle: 0
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-returns: on
+    listener:
+      simple:
+#        发送消息后直接确认消息:none
+#        根据消息消费的情况，智能判定消息的确认情况:auto
+#        手动确认消息的情况:manual
+        acknowledge-mode: manual
+#    template:
+#      default-receive-queue: [rabbitmq-queue]
 #    properties:
 #      hibernate:
 #        dialect:
@@ -165,3 +180,4 @@ sharding:
 #        default-database-strategy:
 #          inline:
 #            sharding-column: id
+
