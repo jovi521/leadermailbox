@@ -4,6 +4,7 @@ import com.skybrian.leadermailbox.domain.entity.Department;
 import com.skybrian.leadermailbox.service.DepartmentService;
 import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +23,18 @@ import java.util.Arrays;
 @RequestMapping(value = "demo")
 public class DemoController {
 
+    /**
+     * 构造方法注入，setter方法注入，接口注入
+     */
+    private final RedisTemplate redisTemplate;
+
+    private final DepartmentService departmentService;
+
     @Autowired
-    private DepartmentService departmentService;
+    public DemoController(DepartmentService departmentService, RedisTemplate redisTemplate) {
+        this.departmentService = departmentService;
+        this.redisTemplate = redisTemplate;
+    }
 
     @ResponseBody
     @GetMapping(value = "dept/{id}")
@@ -57,7 +68,11 @@ public class DemoController {
     @GetMapping(value = "empty")
     public ModelAndView testEmpty() {
         ModelAndView modelAndView = new ModelAndView("layout/general/empty-page");
+        redisTemplate.opsForValue().set("a", "AAA");
+        redisTemplate.opsForValue().set("b", "BBB");
+        Object b = redisTemplate.opsForValue().get("b");
         LocalDateTime date = new LocalDateTime();
+        modelAndView.addObject("b", b);
         modelAndView.addObject("date", date);
         modelAndView.addObject("lists", Arrays.asList("a", "b", "c"));
         return modelAndView;

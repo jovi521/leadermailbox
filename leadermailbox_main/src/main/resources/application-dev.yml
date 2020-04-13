@@ -76,7 +76,8 @@ spring:
   #    test-connection: true
   elasticsearch:
     rest:
-      uris: http://192.168.175.128:9200
+#      uris: http://192.168.175.128:9200
+      uris: http://127.0.0.1:9200
     jest:
       multi-threaded: on
   jpa:
@@ -96,7 +97,7 @@ spring:
   quartz:
     auto-startup: off
   redis:
-    host: 192.168.175.128
+    host: 127.0.0.1
     port: 6379
     database: 0
     jedis:
@@ -149,6 +150,13 @@ swagger:
   #      title: 文档分组2
   ui-config:
     show-request-headers: on
+knife4j:
+  enable: true
+  markdowns: classpath:markdown/*
+  basic:
+    enable: false
+    username: zhangsan
+    password: 123456
 mybatis-plus:
   config-location:
   mapper-locations: [classpath:mybatis/mapper/*.xml]
